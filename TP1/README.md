@@ -19,8 +19,10 @@ Resultado:
 
 2.	Inicie o service-b e acesse no navegador:
       http://localhost:8082/welcome?name=Samuel
-      Resultado:
+
+Resultado:
 
     Olá, bem-vindo Samuel!
+
 
 ![Descrição](documentos/enunciado_TP1.png)
