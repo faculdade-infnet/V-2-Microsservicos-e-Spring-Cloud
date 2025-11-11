@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-custom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-custom
+  template:
+    metadata:
+      labels:
+        app: mysql-custom
+    spec:
+      containers:
+        - name: mysql-custom
+          image: samuelhermany1012/mysql-custom:1.0
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "root"
+            - name: MYSQL_DATABASE
+              value: "dados_db"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-custom-service
+spec:
+  selector:
+    app: mysql-custom
+  ports:
+    - protocol: TCP
+      port: 3306        # porta interna no cluster
+      targetPort: 3306  # porta do container
+      nodePort: 30006   # porta exposta para o host
+  type: NodePort        # para acesso externo via minikube ip
