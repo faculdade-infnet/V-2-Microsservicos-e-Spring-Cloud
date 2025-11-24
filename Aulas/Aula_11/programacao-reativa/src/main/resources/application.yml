@@ -1,0 +1,11 @@
+server:
+  port: 9002
+  shutdown: graceful
+  netty:
+    connection-timeout: 2s
+    idle-timeout: 15s
+spring:
+  application:
+    name: programacao-reativa
+  lifecycle:
+    timeout-per-shutdown-phase: 15s

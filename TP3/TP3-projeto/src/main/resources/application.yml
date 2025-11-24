@@ -1,0 +1,23 @@
+server:
+  port: 8080
+  shutdown: graceful
+  netty:
+    connection-timeout: 2s
+    idle-timeout: 15s
+
+spring:
+  application:
+    name: TP3
+
+  # Configuração R2DBC para PostgreSQL
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/reactive_db
+    username: postgres
+    password: postgres
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
